@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GlanzLeistung – Professionelle Entrümpelung</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #0d0d0d;
+      --dark: #141414;
+      --panel: #1a1a1a;
+      --border: #2a2a2a;
+      --amber: #e8a020;
+      --amber-dark: #c47f0a;
+      --amber-glow: rgba(232, 160, 32, 0.12);
+      --white: #f5f0e8;
+      --muted: #888880;
+      --text: #d4cfc5;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      height: 70px;
+      background: rgba(13,13,13,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.7rem;
+      letter-spacing: 2px;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--amber); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--amber); }
+
+    .nav-cta {
+      background: var(--amber);
+      color: var(--black) !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 2px;
+    }
+    .nav-cta:hover { background: var(--amber-dark) !important; color: var(--black) !important; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 70px 5vw 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 50%, rgba(232,160,32,0.07) 0%, transparent 70%),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 60px,
+          rgba(255,255,255,0.015) 60px,
+          rgba(255,255,255,0.015) 61px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 60px,
+          rgba(255,255,255,0.015) 60px,
+          rgba(255,255,255,0.015) 61px
+        );
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--amber);
+      border: 1px solid var(--amber);
+      padding: 0.35rem 0.8rem;
+      margin-bottom: 2rem;
+      border-radius: 2px;
+    }
+
+    .hero-content { position: relative; max-width: 750px; }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 10vw, 8.5rem);
+      line-height: 0.9;
+      color: var(--white);
+      letter-spacing: 2px;
+      margin-bottom: 0.3em;
+    }
+    .hero-title span { color: var(--amber); }
+
+    .hero-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: var(--text);
+      max-width: 520px;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--amber);
+      color: var(--black);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 1rem 2.2rem;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--amber-dark); transform: translateY(-2px); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 1rem 2.2rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
+
+    .hero-stats {
+      position: absolute;
+      right: 5vw;
+      bottom: 10vh;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      opacity: 0.85;
+    }
+
+    .stat-item { text-align: right; }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      color: var(--amber);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 5vw;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .scroll-line {
+      width: 40px;
+      height: 1px;
+      background: var(--amber);
+      display: inline-block;
+      animation: scrollPulse 2s infinite;
+    }
+    @keyframes scrollPulse { 0%,100%{opacity:1;width:40px} 50%{opacity:0.4;width:20px} }
+
+    /* ── SECTION BASICS ── */
+    section { padding: 7rem 5vw; }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--white);
+      letter-spacing: 1px;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+    .divider {
+      width: 50px;
+      height: 3px;
+      background: var(--amber);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── LEISTUNGEN ── */
+    #leistungen { background: var(--dark); }
+
+    .leistungen-intro {
+      max-width: 600px;
+      margin-bottom: 4rem;
+    }
+    .leistungen-intro p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      font-weight: 300;
+      color: var(--text);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2px;
+    }
+
+    .service-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      position: relative;
+      transition: border-color 0.3s, background 0.3s;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 0;
+      background: var(--amber);
+      transition: height 0.4s ease;
+    }
+    .service-card:hover { border-color: rgba(232,160,32,0.3); background: #1e1e1e; }
+    .service-card:hover::before { height: 100%; }
+
+    .service-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+    .service-num {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: rgba(255,255,255,0.04);
+      line-height: 1;
+    }
+    .service-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    .service-desc {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    /* ── WARUM WIR ── */
+    #warum { background: var(--black); }
+
+    .warum-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .warum-list { display: flex; flex-direction: column; gap: 1.8rem; margin-top: 1rem; }
+
+    .warum-item {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      padding-bottom: 1.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .warum-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .warum-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--amber);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+      background: var(--amber-glow);
+    }
+    .warum-text h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+    .warum-text p { font-size: 0.88rem; line-height: 1.65; color: var(--muted); font-weight: 300; }
+
+    .warum-visual {
+      position: relative;
+      height: 500px;
+    }
+    .warum-box-main {
+      position: absolute;
+      top: 0; left: 0;
+      right: 4rem;
+      bottom: 4rem;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .warum-box-accent {
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 200px;
+      height: 160px;
+      background: var(--amber);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.2rem;
+    }
+    .warum-box-accent .big-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      color: var(--black);
+      line-height: 1;
+    }
+    .warum-box-accent .small-text {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--black);
+      opacity: 0.75;
+    }
+    .warum-box-main .main-icon { font-size: 4rem; }
+    .warum-box-main .main-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 2px;
+      color: var(--white);
+    }
+
+    /* ── ABLAUF ── */
+    #ablauf { background: var(--dark); }
+
+    .ablauf-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0;
+      position: relative;
+    }
+
+    .step {
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--border);
+      position: relative;
+      background: var(--panel);
+      transition: background 0.3s;
+    }
+    .step:hover { background: #1e1e1e; }
+
+    .step-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4rem;
+      color: var(--amber);
+      opacity: 0.25;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      transition: opacity 0.3s;
+    }
+    .step:hover .step-number { opacity: 0.7; }
+
+    .step-icon { font-size: 1.5rem; margin-bottom: 0.8rem; }
+    .step-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .step-desc { font-size: 0.87rem; line-height: 1.6; color: var(--muted); font-weight: 300; }
+
+    /* ── BEWERTUNGEN ── */
+    #bewertungen { background: var(--black); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .review-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      border-radius: 2px;
+      position: relative;
+    }
+    .review-quote {
+      font-size: 3rem;
+      color: var(--amber);
+      opacity: 0.4;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      font-family: Georgia, serif;
+    }
+    .review-text {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--text);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .review-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--amber);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      color: var(--black);
+      flex-shrink: 0;
+    }
+    .review-name {
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--white);
+      letter-spacing: 0.5px;
+    }
+    .review-city {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
+    .stars { color: var(--amber); font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 0.5rem; }
+
+    /* ── KONTAKT ── */
+    #kontakt {
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+    #kontakt::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 50%;
+      height: 100%;
+      background: radial-gradient(ellipse at 80% 50%, rgba(232,160,32,0.06), transparent 70%);
+      pointer-events: none;
+    }
+
+    .kontakt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      position: relative;
+    }
+
+    .kontakt-info { display: flex; flex-direction: column; gap: 2rem; margin-top: 1rem; }
+
+    .info-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .info-icon {
+      font-size: 1.3rem;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--amber);
+    }
+    .info-text strong { display: block; font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 0.2rem; }
+    .info-text a, .info-text span { color: var(--white); font-size: 0.95rem; font-weight: 500; text-decoration: none; }
+    .info-text a:hover { color: var(--amber); }
+
+    .kontakt-form { display: flex; flex-direction: column; gap: 1rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.95rem;
+      padding: 0.85rem 1rem;
+      border-radius: 2px;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #444; }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--amber); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .form-submit {
+      margin-top: 0.5rem;
+    }
+
+    .form-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+      font-weight: 300;
+    }
+
+    /* ── CTA BANNER ── */
+    #cta-banner {
+      background: var(--amber);
+      padding: 4rem 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .cta-text h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: var(--black);
+      letter-spacing: 1px;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .cta-text p {
+      font-size: 1rem;
+      color: rgba(0,0,0,0.65);
+      font-weight: 500;
+    }
+    .btn-dark {
+      background: var(--black);
+      color: var(--amber);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .btn-dark:hover { opacity: 0.85; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080808;
+      border-top: 1px solid var(--border);
+      padding: 4rem 5vw 2rem;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+    .footer-brand .logo span { color: var(--amber); }
+    .footer-brand p { font-size: 0.87rem; line-height: 1.7; color: var(--muted); font-weight: 300; max-width: 280px; }
+
+    .footer-col h5 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul li a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--white); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-bottom p { font-size: 0.8rem; color: var(--muted); }
+    .footer-bottom a { color: var(--muted); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--amber); }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero-stats { display: none; }
+      .warum-grid, .kontakt-grid, .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .warum-visual { height: 250px; }
+      #cta-banner { flex-direction: column; text-align: center; }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">Glanz<span>Leistung</span></a>
+    <ul class="nav-links">
+      <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#ablauf">Ablauf</a></li>
+      <li><a href="#bewertungen">Bewertungen</a></li>
+      <li><a href="#kontakt" class="nav-cta">Anfrage</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content fade-in">
+      <div class="hero-tag">Professionelle Entrümpelung</div>
+      <h1 class="hero-title">Glanz<br><span>Leistung</span></h1>
+      <p class="hero-sub">Wir schaffen Ordnung. Wo andere aufgeben.</p>
+      <p class="hero-desc">
+        Spezialisiert auf Messie-Wohnungen, Haushaltsauflösungen und stark verwahrloste Immobilien.
+        Diskret, schnell und zum Festpreis – bundesweit.
+      </p>
+      <div class="hero-actions">
+        <a href="#kontakt" class="btn-primary">Kostenlos anfragen</a>
+        <a href="#leistungen" class="btn-ghost">Leistungen ansehen</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Aufträge erfüllt</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">48h</div>
+        <div class="stat-label">Reaktionszeit</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Festpreis-Garantie</div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span class="scroll-line"></span>
+      Mehr erfahren
+    </div>
+  </section>
+
+  <!-- LEISTUNGEN -->
+  <section id="leistungen">
+    <div class="leistungen-intro fade-in">
+      <div class="section-label">Was wir machen</div>
+      <h2 class="section-title">Unsere Leistungen</h2>
+      <div class="divider"></div>
+      <p>
+        Von der einzelnen Wohnung bis zum kompletten Anwesen – wir übernehmen was andere nicht anfassen.
+        Kein Auftrag ist zu groß, kein Zustand zu schwierig.
+      </p>
+    </div>
+    <div class="services-grid fade-in">
+      <div class="service-card">
+        <span class="service-num">01</span>
+        <span class="service-icon">🏠</span>
+        <div class="service-title">Messie-Entrümpelung</div>
+        <p class="service-desc">Diskrete und einfühlsame Räumung von stark vermüllten Wohnungen und Häusern. Ohne Wertung, mit vollem Respekt für die Betroffenen.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">02</span>
+        <span class="service-icon">🔑</span>
+        <div class="service-title">Haushaltsauflösung</div>
+        <p class="service-desc">Komplette Auflösung von Wohnungen und Häusern – bei Umzug, Todesfall oder Vermieterwechsel. Inklusive Wertanrechnung verwertbarer Gegenstände.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">03</span>
+        <span class="service-icon">🏚️</span>
+        <div class="service-title">Verwahrloste Immobilien</div>
+        <p class="service-desc">Sanierung und Grundreinigung stark vernachlässigter Objekte – für Vermieter, Erben und Investoren die eine Immobilie wieder vermarktungsfähig machen wollen.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">04</span>
+        <span class="service-icon">🧹</span>
+        <div class="service-title">Grundreinigung nach Räumung</div>
+        <p class="service-desc">Professionelle Endreinigung nach der Entrümpelung – besenrein bis desinfiziert, damit das Objekt sofort wieder nutzbar ist.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">05</span>
+        <span class="service-icon">♻️</span>
+        <div class="service-title">Fachgerechte Entsorgung</div>
+        <p class="service-desc">Legale und umweltgerechte Entsorgung aller Materialien – Sondermüll, Elektroschrott und Sperrmüll inklusive. Alle Entsorgungsnachweise auf Wunsch.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-num">06</span>
+        <span class="service-icon">🚐</span>
+        <div class="service-title">Notfall-Entrümpelung</div>
+        <p class="service-desc">Schnelle Hilfe bei dringenden Fällen – z.B. bei Mieterwechsel unter Zeitdruck oder nach Zwangsräumung. Einsatz innerhalb von 24–48 Stunden möglich.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WARUM WIR -->
+  <section id="warum">
+    <div class="warum-grid fade-in">
+      <div>
+        <div class="section-label">Warum GlanzLeistung</div>
+        <h2 class="section-title">Ihr verlässlicher Partner</h2>
+        <div class="divider"></div>
+        <div class="warum-list">
+          <div class="warum-item">
+            <div class="warum-icon-wrap">💰</div>
+            <div class="warum-text">
+              <h4>Festpreis-Garantie</h4>
+              <p>Kein böses Erwachen am Ende. Sie erhalten vor dem Auftrag ein verbindliches Festpreisangebot – ohne versteckte Kosten.</p>
+            </div>
+          </div>
+          <div class="warum-item">
+            <div class="warum-icon-wrap">🤫</div>
+            <div class="warum-text">
+              <h4>Absolute Diskretion</h4>
+              <p>Wir arbeiten ohne Aufsehen. Keine Beschriftung auf Fahrzeugen, keine Fragen die nicht sein müssen. Ihr Vertrauen ist unser höchstes Gut.</p>
+            </div>
+          </div>
+          <div class="warum-item">
+            <div class="warum-icon-wrap">⚡</div>
+            <div class="warum-text">
+              <h4>Schnelle Abwicklung</h4>
+              <p>Besichtigung innerhalb von 48h, Angebot innerhalb von 24h. Auf Wunsch Soforteinsatz – wir kennen den Druck der Situation.</p>
+            </div>
+          </div>
+          <div class="warum-item">
+            <div class="warum-icon-wrap">📋</div>
+            <div class="warum-text">
+              <h4>Alles aus einer Hand</h4>
+              <p>Entrümpelung, Entsorgung, Reinigung – wir koordinieren alles selbst. Sie müssen nichts organisieren oder koordinieren.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="warum-visual">
+        <div class="warum-box-main">
+          <span class="main-icon">🏆</span>
+          <span class="main-label">GlanzLeistung</span>
+        </div>
+        <div class="warum-box-accent">
+          <span class="big-num">5★</span>
+          <span class="small-text">Kundenbewertung</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABLAUF -->
+  <section id="ablauf">
+    <div class="fade-in" style="max-width:600px; margin-bottom:4rem;">
+      <div class="section-label">So einfach geht's</div>
+      <h2 class="section-title">Der Ablauf</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="ablauf-steps fade-in">
+      <div class="step">
+        <div class="step-number">01</div>
+        <div class="step-icon">📞</div>
+        <div class="step-title">Kontakt aufnehmen</div>
+        <p class="step-desc">Anruf, WhatsApp oder Kontaktformular – schildern Sie kurz die Situation. Keine langen Formulare, kein Stress.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">02</div>
+        <div class="step-icon">🔍</div>
+        <div class="step-title">Besichtigung & Angebot</div>
+        <p class="step-desc">Wir kommen vor Ort, bewerten den Aufwand und erstellen ein verbindliches Festpreisangebot – kostenlos und unverbindlich.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">03</div>
+        <div class="step-icon">✅</div>
+        <div class="step-title">Auftrag bestätigen</div>
+        <p class="step-desc">Sie entscheiden in Ruhe. Wenn alles passt, legen wir gemeinsam den Termin fest. Kein Druck, keine Fristen.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">04</div>
+        <div class="step-icon">🚛</div>
+        <div class="step-title">Wir erledigen alles</div>
+        <p class="step-desc">Unser Team räumt, entsorgt und reinigt – termingerecht, gründlich und diskret. Sie müssen nicht einmal dabei sein.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEWERTUNGEN -->
+  <section id="bewertungen">
+    <div class="fade-in" style="max-width:600px;">
+      <div class="section-label">Kundenstimmen</div>
+      <h2 class="section-title">Was unsere Kunden sagen</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="reviews-grid fade-in">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <div class="review-quote">"</div>
+        <p class="review-text">Nach dem Tod meiner Mutter musste die Wohnung geräumt werden – ein emotional schwieriger Moment. Das Team war unglaublich einfühlsam und professionell. Alles lief reibungslos und zum vereinbarten Preis.</p>
+        <div class="review-author">
+          <div class="review-avatar">MK</div>
+          <div>
+            <div class="review-name">Markus K.</div>
+            <div class="review-city">Frankfurt am Main</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <div class="review-quote">"</div>
+        <p class="review-text">Ich bin Vermieter und hatte eine extrem verwahrloste Wohnung nach einem langen Mietverhältnis. GlanzLeistung hat die Wohnung in einem Tag komplett geräumt und grundgereinigt. Absolute Empfehlung!</p>
+        <div class="review-author">
+          <div class="review-avatar">SB</div>
+          <div>
+            <div class="review-name">Sandra B.</div>
+            <div class="review-city">Darmstadt</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <div class="review-quote">"</div>
+        <p class="review-text">Super schnelle Reaktion, fairer Preis und das Team hat wirklich alles mitgenommen was weg musste. Kein Nörgeln, keine Extrakosten. So muss das sein. Danke!</p>
+        <div class="review-author">
+          <div class="review-avatar">TW</div>
+          <div>
+            <div class="review-name">Thomas W.</div>
+            <div class="review-city">Wiesbaden</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div id="cta-banner">
+    <div class="cta-text">
+      <h2>Bereit für einen frischen Start?</h2>
+      <p>Kostenlose Besichtigung & unverbindliches Festpreisangebot – innerhalb von 48 Stunden.</p>
+    </div>
+    <a href="#kontakt" class="btn-dark">Jetzt anfragen →</a>
+  </div>
+
+  <!-- KONTAKT -->
+  <section id="kontakt">
+    <div class="kontakt-grid fade-in">
+      <div>
+        <div class="section-label">Kontakt</div>
+        <h2 class="section-title">Schreiben Sie uns</h2>
+        <div class="divider"></div>
+        <p style="font-weight:300; line-height:1.8; margin-bottom:2.5rem; font-size:0.97rem;">
+          Schildern Sie uns kurz Ihre Situation – wir melden uns schnellstmöglich zurück. Kostenlos, unverbindlich, diskret.
+        </p>
+        <div class="kontakt-info">
+          <div class="info-item">
+            <div class="info-icon">📞</div>
+            <div class="info-text">
+              <strong>Telefon</strong>
+              <a href="tel:+4969123456789">+49 69 123 456 789</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">✉️</div>
+            <div class="info-text">
+              <strong>E-Mail</strong>
+              <a href="mailto:info@glanzleistung.de">info@glanzleistung.de</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div class="info-text">
+              <strong>Standort</strong>
+              <span>Frankfurt am Main & Umgebung</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">🕐</div>
+            <div class="info-text">
+              <strong>Erreichbarkeit</strong>
+              <span>Mo–Sa: 07:00 – 20:00 Uhr</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="kontakt-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Vorname</label>
+            <input type="text" placeholder="Max" />
+          </div>
+          <div class="form-group">
+            <label>Nachname</label>
+            <input type="text" placeholder="Mustermann" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>E-Mail</label>
+          <input type="email" placeholder="max@beispiel.de" />
+        </div>
+        <div class="form-group">
+          <label>Telefon</label>
+          <input type="tel" placeholder="+49 ..." />
+        </div>
+        <div class="form-group">
+          <label>Art der Anfrage</label>
+          <select>
+            <option value="">Bitte auswählen...</option>
+            <option>Messie-Entrümpelung</option>
+            <option>Haushaltsauflösung</option>
+            <option>Verwahrloste Immobilie</option>
+            <option>Grundreinigung</option>
+            <option>Notfall-Entrümpelung</option>
+            <option>Sonstiges</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Ihre Nachricht</label>
+          <textarea placeholder="Beschreiben Sie kurz die Situation, den Ort und den ungefähren Umfang..."></textarea>
+        </div>
+        <div class="form-submit">
+          <a href="mailto:info@glanzleistung.de" class="btn-primary" style="width:100%; text-align:center; display:block;">
+            Anfrage absenden →
+          </a>
+        </div>
+        <p class="form-note">Wir antworten in der Regel innerhalb von 24 Stunden. Alle Angaben werden vertraulich behandelt.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">Glanz<span>Leistung</span></div>
+        <p>Professionelle Entrümpelung, Haushaltsauflösung und Sonderreinigung. Diskret, fair und zuverlässig – seit dem ersten Tag.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Leistungen</h5>
+        <ul>
+          <li><a href="#leistungen">Messie-Entrümpelung</a></li>
+          <li><a href="#leistungen">Haushaltsauflösung</a></li>
+          <li><a href="#leistungen">Grundreinigung</a></li>
+          <li><a href="#leistungen">Notfalleinsatz</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Rechtliches</h5>
+        <ul>
+          <li><a href="#">Impressum</a></li>
+          <li><a href="#">Datenschutz</a></li>
+          <li><a href="#">AGB</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 GlanzLeistung – Alle Rechte vorbehalten.</p>
+      <p><a href="#">Impressum</a> · <a href="#">Datenschutz</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Fade-in on scroll
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+    // Trigger hero immediately
+    setTimeout(() => {
+      document.querySelectorAll('.fade-in').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) el.classList.add('visible');
+      });
+    }, 100);
+  </script>
+</body>
+</html>
